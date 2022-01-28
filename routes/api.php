@@ -4,6 +4,7 @@ use App\Http\Controllers\PartijaController;
 use App\Http\Controllers\SkupstinaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AutfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('skupstina', SkupstinaController::class);
-Route::resource('partija', PartijaController::class);
+Route::post('register', [AutfController::class, 'register']);
+Route::post('login', [AutfController::class, 'login']);
 
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::resource('skupstina', SkupstinaController::class);
+    Route::resource('partija', PartijaController::class);
+    Route::post('logout', [AutfController::class, 'logout']);
 });
