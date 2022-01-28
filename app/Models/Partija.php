@@ -11,6 +11,14 @@ class Partija extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nazivPartije',
+        'godinaOsnivanja',
+        'predsednik',
+        'brojClanova',
+        'skupstinaID'
+    ];
+
     public function skupstina()
     {
         return $this->belongsTo(Skupstina::class);

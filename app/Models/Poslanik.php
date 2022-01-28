@@ -10,6 +10,13 @@ class Poslanik extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'imePrezime',
+        'adresa',
+        'email',
+        'partijaID',
+    ];
+
     public function partija()
     {
         return $this->belongsTo(Partija::class);

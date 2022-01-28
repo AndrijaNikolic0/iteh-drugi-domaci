@@ -10,6 +10,12 @@ class Skupstina extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'grad',
+        'drzava',
+        'brojPoslanika'
+    ];
+
     public function partije()
     {
         return $this->hasMany(Partija::class);
